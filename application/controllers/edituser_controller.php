@@ -13,12 +13,6 @@
 		{
 			$daftargroup = $this->group->getgroup();
 			$option = array();
-			foreach ($daftargroup as $key) {
-				//array_push($option, $key->group_name);
-				// $option[$key->id] = $key->group_name;
-				echo $key->id;
-				echo $key->group_name.'<br>';
-			}
 			$data = array('username' => $this->getusername(), 
 							'group_name' => $this->getgroup(),
 							'role' => $this->getrole(),
