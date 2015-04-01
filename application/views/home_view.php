@@ -35,7 +35,9 @@
           <tr>
             <th>No.</th>
             <th>File Name</th>
-            <!-- <th class="row text-center">Delete</th> -->
+            <?php if($role === 'leader')
+              echo '<th class="row text-center">Delete</th>';
+            ?>
             <th class="row text-center">Download</th>
           </tr>
         </thead>
@@ -45,7 +47,9 @@
               <tr>
                 <td><?php echo $no; ?></td>
                 <td><a href="<?php echo $dir.'/'.$value?>"><?php echo $value;?></td>
-                <!-- <td class="row text-center"> <a href="file_controller/delFile/<?php //echo $value?>"><span class="glyphicon glyphicon-remove"></span></td> -->
+                <?php if($role === 'leader')
+                  echo '<td class="row text-center"> <a href="file_controller/delFile/'.$value.'"><span class="glyphicon glyphicon-remove"></span></td>';
+                ?>  
                 <td class="row text-center"> <a href="<?php echo $dir.'/'.$value?>"><span class="glyphicon glyphicon-download-alt"></span></td>
               </tr>
               <?php $no++; ?>

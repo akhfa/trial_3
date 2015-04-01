@@ -11,10 +11,10 @@
 		function delFile()
 		{
 			$session_data = $this->session->userdata('logged_in');
-			$group = $session_data['group'];
+			$group_name = $session_data['group_name'];
 			$role = $session_data['role'];
 			
-			$dir = './uploads/'.$group.'/';
+			$dir = './uploads/'.$group_name.'/';
 			
 			$namaFile = $this->getNamaFile();
 			if($role == 'user')
@@ -36,9 +36,9 @@
 		function delgroupfile()
 		{
 			$session_data = $this->session->userdata('logged_in');
-			$group = $this->getgroupname(); //Gak bisa pake session karena sessionnya adalah group admin
+			$group_name = $this->getgroupname(); //Gak bisa pake session karena sessionnya adalah group admin
 			
-			$dir = './uploads/'.$group.'/';
+			$dir = './uploads/'.$group_name.'/';
 			
 			$this->rrmdir($dir);
 

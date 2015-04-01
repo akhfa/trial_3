@@ -21,6 +21,7 @@
     
     <!-- Tabel manajemen user -->
     <div class="table-responsive">          
+    <?php if(!empty($daftaruser)) {?>
       <table class="table">
       <!-- <caption class="row text-center">Manajemen User</caption> -->
         <thead>
@@ -46,6 +47,7 @@
             <?php endforeach; ?>
         </tbody>
       </table>
+      <?php } else echo "<h2>Tidak ada user di grup ini.<h2>"; ?>
     </div>
 
     <form action="<?php echo base_url()?>index.php/home">
