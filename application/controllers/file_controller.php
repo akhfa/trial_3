@@ -47,7 +47,13 @@
 			
 			$dir = './uploads/'.$group_name;
 			
-			$this->rrmdir($dir);
+			delete_files($dir, TRUE);
+
+			//log
+	    	$session_data = $this->session->userdata('logged_in');
+			$CI =& get_instance();
+	        $CI->load->model('log');
+	        $CI->log->addlog($session_data['username'], $group_name, $session_data['group_name'],'delete');
 
 			redirect('home', 'refresh');
 
