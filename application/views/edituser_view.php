@@ -41,7 +41,18 @@
 
     </div>
     <div class="form-group">
-        <input type="text" class="form-control input-lg" id="role" name="role" value="<?php echo $role; ?>"/>
+        <!-- <input type="text" class="form-control input-lg" id="role" name="role" value="<?php //echo $role; ?>"/> -->
+        <select name="role">
+            <?php $options = array('user', 'admin', 'leader'); ?>
+            <?php foreach ($options as $key) {
+                if($role === $key)
+                    echo '<option value="'.$key.'" selected="selected">'.$key.'</option>';
+                else
+                {
+                    echo '<option value="'.$key.'">'.$key.'</option>';
+                }
+            }?>
+        </select>
     </div>
     <div class="form-group">
         <button type="submit" value="Change" class="btn btn-primary btn-lg btn-block">Edit User</button>
