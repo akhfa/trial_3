@@ -37,7 +37,14 @@ function update($group_name)
  {
    $prev_group = $this->input->post('prev_group');
 
+   $output = shell_exec('mv uploads/'.$prev_group.' uploads/'.$group_name);
+   
    $result = $this->group->updategroup($prev_group, $group_name);
+
+   //echo $output;
+
+   //echo '<script type="text/javascript">alert("'.$output.'");</script>';
+   //echo '<script type="text/javascript">alert("' . $msg . '"); </script>';
 
    if($result)
    {
