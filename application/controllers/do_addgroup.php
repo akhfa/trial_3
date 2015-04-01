@@ -23,11 +23,11 @@ class Do_AddGroup extends CI_Controller {
  
    if($this->form_validation->run() == FALSE)
    {
-     $this->load->view('failedregister_view');
+     $this->load->view('failed_view', array('jenis' => 'addgroup'));
    }
    else
    {
-     $this->load->view('successregister_view');
+     $this->load->view('success_view', array('jenis' => 'addgroup'));
    }
  
  }

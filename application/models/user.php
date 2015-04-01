@@ -89,16 +89,32 @@
 
 		function updateuser($username, $group, $role)
 		{
-			$data = array(
-               'group' => $group,
-               'role' => $role
-            );
+			$this->db->select('id');
+			$this->db->from('group');
+			$this->db->where('group_name', $group);
 
-			$this->db->where('username', $username);
-			if($this->db->update('users', $data))
-				return true;
-			else
+			$query = $this->db->get();
+
+			if($query->num_rows() == 1)
+			{
+				$result = $query->result();
+
+				$data = array(
+	               'group_id' => $result->group_id,
+	               'role' => $role
+	            );
+
+				$this->db->where('username', $username);
+				if($this->db->update('users', $data))
+					return true;
+				else
+					return false;
+				return $query->result();
+			}
+			else {
 				return false;
+			}
+
 		}
 	}
 ?>
