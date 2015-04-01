@@ -6,13 +6,23 @@
 		{
 			parent::__construct();
 			$this->load->helper(array('form'));
+			$this->load->model('group', '', TRUE);
 		}
 
 		function edituser()
 		{
+			$daftargroup = $this->group->getgroup();
+			$option = array();
+			foreach ($daftargroup as $key) {
+				//array_push($option, $key->group_name);
+				// $option[$key->id] = $key->group_name;
+				echo $key->id;
+				echo $key->group_name.'<br>';
+			}
 			$data = array('username' => $this->getusername(), 
-							'group' => $this->getgroup(),
-							'role' => $this->getrole()
+							'group_name' => $this->getgroup(),
+							'role' => $this->getrole(),
+							'option'=> $this->group->getgroup()
 						);
 			$this->load->view('edituser_view', $data);
 		}

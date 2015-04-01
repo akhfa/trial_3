@@ -26,9 +26,19 @@
         <input type="text" class="form-control input-lg" id="username" name="username" value="<?php echo $username; ?>" readonly/>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control input-lg" id="group" name="group" value="<?php if($group === 'default') 
-                                                                                                echo "no group"; 
-                                                                                                else echo $group; ?>"/>
+        <!-- <input type="text" class="form-control input-lg" id="group" name="group" value="<?php //if($group_name === 'default') 
+                                                                                                //echo "no group"; 
+                                                                                                //else echo $group_name; ?>"/> -->
+        <select name="selectedgroup"> 
+            <?php echo '<option value="no group">No Group</option>'; ?>
+            <?php foreach ($option as $key) {
+                if($key->group_name === $group_name)
+                    echo '<option value="'.$key->group_name.'" selected="selected">'.$key->group_name.'</option>';
+                else
+                    echo '<option value="'.$key->group_name.'">'.$key->group_name.'</option>';
+            }?>
+        </select>
+
     </div>
     <div class="form-group">
         <input type="text" class="form-control input-lg" id="role" name="role" value="<?php echo $role; ?>"/>

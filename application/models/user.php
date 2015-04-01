@@ -102,6 +102,7 @@
 			$result = $this->getgroupid($group_name);
 			foreach ($result as $key) {
 				$group_id = $key->id;
+				echo "group_id = ".$group_id;
 			}
 
 			//Update data

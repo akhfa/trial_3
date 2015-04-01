@@ -20,9 +20,8 @@ class Do_EditUser extends CI_Controller {
  {
    $this->load->library('form_validation');
  
-   $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-   $this->form_validation->set_rules('group', 'Group name', 'trim|required|xss_clean|callback_change');
- 
+   $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|callback_change');
+   
    if($this->form_validation->run())
    {
       $this->load->view('successchangegroup_view', array('username' => $this->input->post('username') ));
@@ -34,14 +33,14 @@ class Do_EditUser extends CI_Controller {
  
  }
 
-  function change($group)
+  function change($username)
    {
-      $username = $this->input->post('username');
-      if($group === 'no group')
-        $group = 'default';
+      $selectedgroup = $this->input->post('selectedgroup');
+      if($selectedgroup === 'no group')
+        $selectedgroup = 'default';
       $role = $this->input->post('role');
 
-      if($result = $this->user->updateuser($username, $group, $role))
+      if($result = $this->user->updateuser($username, $selectedgroup, $role))
         return TRUE;
       else
         return FALSE;

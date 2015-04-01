@@ -14,7 +14,7 @@
 		function index()
 		{
 			$session_data = $this->session->userdata('logged_in');
-			if(element('group', $session_data) === "default")
+			if($session_data['group_name'] === "default")
 				$this->load->view("upload_default_view");
 			else
 				$this->load->view('upload_view', array('error' => ' ' ));
@@ -23,15 +23,15 @@
 		function do_upload()
 		{
 			$session_data = $this->session->userdata('logged_in');
-			$id = element('id', $session_data);
-			$username = element('username', $session_data);
-			$group = element('group', $session_data);
+			$id = $session_data['id'];
+			$username = $session_data['username'];
+			$group_name = $session_data['group_name'];
 
 			// Cek Folder
-			if(!is_dir('./uploads/'.$group))
-				mkdir('./uploads/'.$group, 0777, TRUE);
+			if(!is_dir('./uploads/'.$group_name))
+				mkdir('./uploads/'.$group_name, 0777, TRUE);
 
-			$config['upload_path'] = './uploads/'.$group;
+			$config['upload_path'] = './uploads/'.$group_name;
 			$config['allowed_types'] = '*';
 			$config['max_size']	= '1500';
 			$config['max_width']  = '*';

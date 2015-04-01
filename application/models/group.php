@@ -4,7 +4,7 @@
 		
 		function getgroup()
 		{
-			$this->db->select('group_name');
+			$this->db->select('id, group_name');
 			$this->db->from('group');
 			$this->db->where('group_name !=', 'default');
 			$this->db->order_by("group_name", "asc");
