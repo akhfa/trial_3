@@ -29,6 +29,7 @@
               <th>No.</th>
               <th>Group</th>
               <th class="row text-center">Manage Grup Member</th>
+              <th class="row text-center">Edit Group Name</th>
               <th class="row text-center">Hapus Grup</th>
             </tr>
           </thead>
@@ -39,6 +40,7 @@
                   <td><?php echo $no;             ?></td>
                   <td><?php echo $grup->group_name;    ?></td>
                   <td class="row text-center"> <a href="group_controller/managegroup/<?php echo $grup->group_name;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
+                  <td class="row text-center"> <a href="group_controller/updategroup/<?php echo $grup->group_name;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
                   <td class="row text-center"> <?php if(strcmp($grup->group_name, $group_name) != 0) { echo '<a href="group_controller/delgroup/'.$grup->group_name.'">';}?><span class="glyphicon glyphicon-remove"></span></td>
                 </tr>
                 <?php $no++; ?>

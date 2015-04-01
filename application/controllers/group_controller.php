@@ -24,11 +24,6 @@
 			
 		}
 
-		function getgroupname()
-		{
-			return $this->uri->segment(3);
-		}
-
 		function managegroup()
 		{
 			$groupname = $this->getgroupname();
@@ -40,6 +35,17 @@
 		function addgroup()
 		{
 			$this->load->view('addgroup_view');
+		}
+
+		function updategroup()
+		{
+			$data = array('prev_group' => $this->getgroupname());
+			$this->load->view('updategroup_view', $data);
+		}
+
+		function getgroupname()
+		{
+			return $this->uri->segment(3);
 		}
 	}
 ?>

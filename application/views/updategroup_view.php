@@ -2,15 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Sukses
-    <?php if($jenis === 'addgroup')
-            echo "menambahkan group";
-          elseif ($jenis === 'update_group') {
-            echo "update group";
-          }
-    ?>
-
-    </title>
+    <title>Update Grup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>bootstrap/css/bootstrap.min.css" />
@@ -24,20 +16,21 @@
 <div class="container">
 
 <div class="page-header">
-    <h1>Sukses 
-    <?php if($jenis === 'addgroup')
-            echo "menambahkan group";
-          elseif ($jenis === 'update_group') {
-            echo "update group";
-          }
-    ?>
-    </h1>
+    <h1>Update Grup</h1>
 </div>
+    <?php echo validation_errors(); ?>
+    <?php echo form_open('do_updategroup'); ?>
     
-    <div>
-        <form action="home">
-            <button type="submit" value="Home" class="btn btn-primary btn-lg btn-block">Home</button>
-        </form>
+    <div class="form-group">
+        <input type="prev_group" class="form-control input-lg" placeholder="Nama Group" id="prev_group" name="prev_group"
+        value="<?php echo $prev_group;?>" readonly/>
+    </div>
+
+    <div class="form-group">
+        <input type="group_name" class="form-control input-lg" placeholder="Nama Group Baru" id="group_name" name="group_name"/>
+    </div>
+    <div class="form-group">
+        <button type="submit" value="Update" class="btn btn-primary btn-lg btn-block">Update Group</button>
     </div>
 </form>
 

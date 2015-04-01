@@ -49,13 +49,13 @@
 			
 		}
 
-		function updategroup($group, $newgroup)
+		function updategroup($prev_group, $newgroup)
 		{
 			$data = array(
-               'group' => $newgroup
+               'group_name' => $newgroup
             );
-			$this->db->where('group', $group);
-			return $this->db->update('users', $data);
+			$this->db->where('group_name', $prev_group);
+			return $this->db->update('group', $data);
 		}
 
 		function addgroup($group_name)
