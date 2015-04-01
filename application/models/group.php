@@ -4,11 +4,10 @@
 		
 		function getgroup()
 		{
-			$this->db->select('group');
-			$this->db->distinct();
-			$this->db->from('users');
-			$this->db->where('group !=', 'default');
-			$this->db->order_by("group", "asc");
+			$this->db->select('group_name');
+			$this->db->from('group');
+			$this->db->where('group_name !=', 'default');
+			$this->db->order_by("group_name", "asc");
 			
 			$query = $this->db->get();
 
@@ -41,8 +40,8 @@
 
 		function delgroup($group)
 		{
-			$this->db->where('group', $group); 
-			if($this->db->delete('users'))
+			$this->db->where('group_name', $group); 
+			if($this->db->delete('group'))
 				return true;
 			else
 				return false;
@@ -56,6 +55,27 @@
             );
 			$this->db->where('group', $group);
 			return $this->db->update('users', $data);
+		}
+
+		function addgroup($group_name)
+		{
+			$this->db->select('group_name');
+			$this->db->from('group');
+			$this->db->where('group_name', $group_name);
+			$this->db->limit(1);
+
+			$query = $this->db->get();
+
+			if($query->num_rows() == 1)
+			{
+				return false;
+			}
+			else 
+			{
+				$data = array('group_name' => $group_name);
+				$this->db->insert('group', $data);
+				return true;
+			}
 		}
 	}
 ?>

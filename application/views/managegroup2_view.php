@@ -37,9 +37,9 @@
               <?php foreach ($daftargrup as $grup): ?>
                 <tr>
                   <td><?php echo $no;             ?></td>
-                  <td><?php echo $grup->group;    ?></td>
-                  <td class="row text-center"> <a href="group_controller/managegroup/<?php echo $grup->group;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
-                  <td class="row text-center"> <?php if(strcmp($grup->group, $group) != 0) { echo '<a href="group_controller/delgroup/'.$grup->group.'">';}?><span class="glyphicon glyphicon-remove"></span></td>
+                  <td><?php echo $grup->group_name;    ?></td>
+                  <td class="row text-center"> <a href="group_controller/managegroup/<?php echo $grup->group_name;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
+                  <td class="row text-center"> <?php if(strcmp($grup->group_name, $group) != 0) { echo '<a href="group_controller/delgroup/'.$grup->group_name.'">';}?><span class="glyphicon glyphicon-remove"></span></td>
                 </tr>
                 <?php $no++; ?>
               <?php endforeach; ?>
@@ -47,6 +47,12 @@
         </table>
       <?php } else {echo '<h2>Tidak ada daftar grup di database.</h2>';} ?>
     </div>
+
+    <form action="<?php echo base_url()?>index.php/group_controller/addgroup">
+      <div class="form-group">
+          <button type="submit" value="Home" class="btn btn-primary btn-lg btn-block">Tambah Grup Baru</button>
+      </div>
+    </form>
 
     <form action="<?php echo base_url()?>index.php/home">
       <div class="form-group">

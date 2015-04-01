@@ -8,6 +8,7 @@
 	     $this->load->model('group','',TRUE);
 	     $this->load->library('user_agent');
 	     $this->load->library('../controllers/file_controller.php');
+	     $this->load->library('form_validation');
 	   }
 
 		function delgroup()
@@ -29,6 +30,11 @@
 			$data['daftaruser'] = $this->group->getmember($groupname);
 			$data['groupname'] = $groupname;
 			$this->load->view('managegroup_view', $data);
+		}
+
+		function addgroup()
+		{
+			$this->load->view('addgroup_view');
 		}
 	}
 ?>

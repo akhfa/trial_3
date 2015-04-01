@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'trial_hostgroup';
+$db['default']['username'] = 'trial_tugas3';
 $db['default']['password'] = 'akhfa';
-$db['default']['database'] = 'trial_hostgroup';
+$db['default']['database'] = 'trial_tugas3';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
