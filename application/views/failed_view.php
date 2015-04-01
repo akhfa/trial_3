@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Sukses
+    <title>Gagal
     <?php if($jenis === 'addgroup')
             echo "menambahkan group";
     ?>
@@ -21,7 +21,7 @@
 <div class="container">
 
 <div class="page-header">
-    <h1>Sukses 
+    <h1>Gagal 
     <?php if($jenis === 'addgroup')
             echo "menambahkan group";
     ?>
