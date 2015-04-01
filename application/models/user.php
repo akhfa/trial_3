@@ -91,7 +91,14 @@
 
 		function deluserbygroup($group_name)
 		{
-			$this->db->where('group', $group_name); 
+			//Cari group id
+			$result = $this->getgroupid($group_name);
+			foreach ($result as $key) {
+				$group_id = $key->id;
+				echo "group_id = ".$group_id;
+			}
+
+			$this->db->where('group', $group_id); 
 			
 			return ($this->db->delete('users'));
 		}
