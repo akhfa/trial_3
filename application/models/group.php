@@ -24,7 +24,8 @@
 		{
 			$this->db->select('username, group, role');
 			$this->db->from('users');
-			$this->db->where('group', $groupname);
+			$this->db->join('group','users.group = group.id');
+			$this->db->where('group_name', $groupname);
 			$this->db->order_by("username", "asc");
 			
 			$query = $this->db->get();
