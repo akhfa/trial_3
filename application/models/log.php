@@ -12,9 +12,9 @@
 							'nama_file' => $nama_file,
 							'group_id' => $group_id,
 							'jenis_log' => $jenis_log);
-			
-			$this->db->insert('log', $data);
-			return true;
+
+			return $this->db->insert('log', $data);
+			//return true;
 		}
 
 		function getgroupid($group_name)

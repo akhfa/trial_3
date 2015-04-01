@@ -5,7 +5,7 @@
 		function __construct()
 	   {
 	     parent::__construct();
-	     $this->load->helper('file');
+	     $this->load->helper(array('file', 'download'));
 	   }
 	   
 		function delFile()
@@ -72,6 +72,33 @@
 		    } 
 		    	 
 		  } rmdir($dir); 
+		}
+
+		function downloadfile($group_name, $nama_file)
+		{
+			$group_name = $this->get_group_name();
+			$nama_file = $this->get_nama_file();
+			$data = file_get_contents('uploads/'.$group_name.'/'.$nama_file);
+			
+			//Log
+			$session_data = $this->session->userdata('logged_in');
+			$CI =& get_instance();
+			$CI->load->model('log');
+			$CI->log->addlog($session_data['username'], $nama_file, $session_data['group_name'], 'download');
+
+			//download file
+			force_download($nama_file, $data);
+
+		}
+
+		function get_group_name()
+		{
+			return $this->uri->segment(3);
+		}
+
+		function get_nama_file()
+		{
+			return $this->uri->segment(4);
 		}
 	}
 ?>

@@ -28,7 +28,7 @@
 
     <!-- Listing directory -->
     <?php $map = directory_map('./uploads/'.$group_name);?>
-      <?php $dir = base_url().'uploads/'.$group_name; ?>
+      <?php $dir = $group_name; ?>
 
       <div class="table-responsive">          
       <?php if (!empty($map)) {?>
@@ -47,9 +47,9 @@
               <?php foreach ($map as $value):?>
                 <tr>
                   <td><?php echo $no; ?></td>
-                  <td><a href="<?php echo $dir.'/'.$value?>"><?php echo $value;?></td>
+                  <td><?php echo $value;?></td>
                   <td class="row text-center"> <a href="file_controller/delFile/<?php echo $value?>"><span class="glyphicon glyphicon-remove"></span></td>
-                  <td class="row text-center"> <a href="<?php echo $dir.'/'.$value?>"><span class="glyphicon glyphicon-download-alt"></span></td>
+                  <td class="row text-center"> <a href="file_controller/downloadfile/<?php echo $dir.'/'.$value?>"><span class="glyphicon glyphicon-download-alt"></span></td>
                 </tr>
                 <?php $no++; ?>
               <?php endforeach; ?>
