@@ -26,7 +26,7 @@
 					//log
 					$CI =& get_instance();
 			        $CI->load->model('log');
-			        $CI->log->addlog($session_data['username'], $dir.$namaFile, 'delete');
+			        $CI->log->addlog($session_data['username'], $namaFile, $group_name,'delete');
 					
 					redirect('home', 'refresh');
 				}
@@ -45,7 +45,7 @@
 			$session_data = $this->session->userdata('logged_in');
 			$group_name = $this->getgroupname(); //Gak bisa pake session karena sessionnya adalah group admin
 			
-			$dir = './uploads/'.$group_name.'/';
+			$dir = './uploads/'.$group_name;
 			
 			$this->rrmdir($dir);
 
@@ -68,7 +68,7 @@
 		    	$session_data = $this->session->userdata('logged_in');
 				$CI =& get_instance();
 		        $CI->load->model('log');
-		        $CI->log->addlog($session_data['username'], $file, 'delete');
+		        $CI->log->addlog($session_data['username'], $file, $session_data['group_name'],'delete');
 		    } 
 		    	 
 		  } rmdir($dir); 

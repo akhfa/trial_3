@@ -47,6 +47,15 @@
 			}
 			else
 			{
+				//Get filename
+				$data = $this->upload->data();
+
+				//log
+		    	$session_data = $this->session->userdata('logged_in');
+				$CI =& get_instance();
+		        $CI->load->model('log');
+		        $CI->log->addlog($session_data['username'], $data['file_name'], $session_data['group_name'],'upload');
+
 				$data = array('upload_data' => $this->upload->data());
 
 				$this->load->view('uploadsuccess_view', $data);

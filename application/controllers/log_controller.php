@@ -13,7 +13,7 @@
 	     // $this->load->library('form_validation');
 	   }
 
-		function addlog($nama_file, $jenis_log)
+		function addlog($nama_file, $jenis_log, $group_id)
 		{
 			$session_data = $this->session->user_data('logged_in');
 			$username = $session_data['username'];
