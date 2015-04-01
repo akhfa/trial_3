@@ -16,17 +16,17 @@
       <h1>Home</h1>
       <h2>Welcome <?php echo $username; ?>!</h2>
       <h3>Your member id is <?php echo $id; ?> </h3>
-      <?php if($group === 'default') {?>
+      <?php if($group_name === 'default') {?>
           <h3>Anda belum memasuki grup manapun <br></h3>
       <?php } else {?>
-          <h3>Your group is <?php echo $group; ?></h3>
+          <h3>Your group is <?php echo $group_name; ?></h3>
       <?php } ?>
     </div>
      
     
     <!-- Listing directory -->
-    <?php $map = directory_map('./uploads/'.$group);?>
-      <?php $dir = base_url().'uploads/'.$group; ?>
+    <?php $map = directory_map('./uploads/'.$group_name);?>
+      <?php $dir = base_url().'uploads/'.$group_name; ?>
 
       <div class="table-responsive"> 
       <?php if (!empty($map)) {?> 
@@ -61,7 +61,7 @@
           <button type="submit" value="ChangePassword" class="btn btn-primary btn-lg btn-block">Change Password</button>
       </div>
     </form>
-    <?php if(strcmp($group, "default")  != 0){?>
+    <?php if(strcmp($group_name, "default")  != 0){?>
     <form action="upload_controller">
     	<div class="form-group row text-center">
         	<button type="submit" value="Upload" class="btn btn-primary btn-lg btn-block">Upload</button>

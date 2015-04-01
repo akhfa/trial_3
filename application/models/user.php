@@ -3,8 +3,9 @@
 	{
 		function login ($username, $password)
 		{
-			$this->db->select('id, username, password, group, role');
+			$this->db->select('users.id, username, password, group_name, role');
 			$this->db->from('users');
+			$this->db->join('group', 'users.group = group.id');
 			$this->db->where('username', $username);
 			$this->db->where('password', MD5($password));
 			$this->db->limit(1);
@@ -61,8 +62,9 @@
 			$session_data = $this->session->userdata('logged_in');
 	       $data['username'] = $session_data['username'];
 
-			$this->db->select('username, group, role');
+			$this->db->select('username, group_name, role');
 			$this->db->from('users');
+			$this->db->join('group', 'group = group.id');
 			$this->db->where('username !=', $session_data['username']);
 			$this->db->order_by("username", "asc");
 			
@@ -96,18 +98,24 @@
 
 		function updateuser($username, $group, $role)
 		{
-				$data = array(
-	               'group' => $group,
-	               'role' => $role
-	            );
+			//Cari group id
+			$group_id = $this->getgroupid($group);
 
-				$this->db->where('username', $username);
-				if($this->db->update('users', $data))
-					return true;
-				else
-					return false;
-				return $query->result();
+			//Update data
+			$data = array(
+               'group' => $group_id,
+               'role' => $role
+            );
 
+			$this->db->where('username', $username);
+			return $this->db->update('users', $data);
+		}
+
+		function getgroupid($group_name)
+		{
+			$CI =& get_instance();
+	        $CI->load->model('group');
+	        return $CI->group->getid();
 		}
 	}
 ?>

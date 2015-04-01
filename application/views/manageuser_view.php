@@ -40,8 +40,8 @@
                 <tr>
                   <td><?php echo $no;             ?></td>
                   <td><?php echo $user->username; ?></td>
-                  <td><?php if($user->group === 'default') echo 'no group'; else echo $user->group;    ?></td>
-                  <td class="row text-center"> <a href="edituser_controller/edituser/<?php echo $user->username;?>/<?php echo $user->group;?>/<?php echo $user->role;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
+                  <td><?php if($user->group_name === 'default') echo 'no group'; else echo $user->group_name;    ?></td>
+                  <td class="row text-center"> <a href="edituser_controller/edituser/<?php echo $user->username;?>/<?php echo $user->group_name;?>/<?php echo $user->role;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
                   <td class="row text-center"> <a href="changepassword_controller/changepass/<?php echo $user->username;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
                   <td class="row text-center"> <a href="user_controller/deluser/<?php echo $user->username?>"><span class="glyphicon glyphicon-remove"></span></td>
                 </tr>

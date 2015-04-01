@@ -39,7 +39,7 @@
                   <td><?php echo $no;             ?></td>
                   <td><?php echo $grup->group_name;    ?></td>
                   <td class="row text-center"> <a href="group_controller/managegroup/<?php echo $grup->group_name;?>"><span class="glyphicon glyphicon glyphicon-pencil"></span></td>
-                  <td class="row text-center"> <?php if(strcmp($grup->group_name, $group) != 0) { echo '<a href="group_controller/delgroup/'.$grup->group_name.'">';}?><span class="glyphicon glyphicon-remove"></span></td>
+                  <td class="row text-center"> <?php if(strcmp($grup->group_name, $group_name) != 0) { echo '<a href="group_controller/delgroup/'.$grup->group_name.'">';}?><span class="glyphicon glyphicon-remove"></span></td>
                 </tr>
                 <?php $no++; ?>
               <?php endforeach; ?>

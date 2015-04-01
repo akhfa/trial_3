@@ -47,7 +47,7 @@ function check_database($password)
        $sess_array = array(
          'id' => $row->id,
          'username' => $row->username,
-         'group' => $row->group,
+         'group_name' => $row->group_name,
          'role' => $row->role
        );
        $this->session->set_userdata('logged_in', $sess_array);

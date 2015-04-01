@@ -17,7 +17,7 @@ class ManageGroup extends CI_Controller {
        $session_data = $this->session->userdata('logged_in');
        $data['username'] = $session_data['username'];
        $data['id'] = $session_data['id'];
-       $data['group'] = $session_data['group'];
+       $data['group_name'] = $session_data['group_name'];
        $data['role'] = $session_data['role'];
 
        if($session_data['role'] === "admin"){
