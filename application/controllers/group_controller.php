@@ -6,6 +6,7 @@
 	   {
 	     parent::__construct();
 	     $this->load->model('group','',TRUE);
+	     $this->load->model('user','',TRUE);
 	     $this->load->library('user_agent');
 	     $this->load->library('../controllers/file_controller.php');
 	     $this->load->library('form_validation');
@@ -13,10 +14,14 @@
 
 		function delgroup()
 		{
-			if($this->group->delgroup($this->getgroupname()))
+			if($this->user->deluserbygroup($this->getgroupname()))
 			{
-				$this->file_controller->delgroupfile();
+				if($this->group->delgroup($this->getgroupname()))
+				{
+					$this->file_controller->delgroupfile();
+				}
 			}
+			
 		}
 
 		function getgroupname()

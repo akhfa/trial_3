@@ -87,20 +87,17 @@
 			
 		}
 
+		function deluserbygroup($group_name)
+		{
+			$this->db->where('group', $group_name); 
+			
+			return ($this->db->delete('users'));
+		}
+
 		function updateuser($username, $group, $role)
 		{
-			$this->db->select('id');
-			$this->db->from('group');
-			$this->db->where('group_name', $group);
-
-			$query = $this->db->get();
-
-			if($query->num_rows() == 1)
-			{
-				$result = $query->result();
-
 				$data = array(
-	               'group_id' => $result->group_id,
+	               'group' => $group,
 	               'role' => $role
 	            );
 
@@ -110,10 +107,6 @@
 				else
 					return false;
 				return $query->result();
-			}
-			else {
-				return false;
-			}
 
 		}
 	}
