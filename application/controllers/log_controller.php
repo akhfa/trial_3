@@ -15,8 +15,19 @@
 
 		function addlog($nama_file, $jenis_log, $group_id)
 		{
-			$session_data = $this->session->user_data('logged_in');
+			$session_data = $this->session->userdata('logged_in');
 			$username = $session_data['username'];
+		}
+
+		function viewlog()
+		{
+			$result = $this->log->getlog();
+
+			$session_data = $this->session->userdata('logged_in');
+			$data['group_name'] = $session_data['group_name'];
+			$data['role'] = $session_data['role'];
+			$data['daftar_log'] = $result;
+			$this->load->view('log_view', $data);
 		}
 	}
 ?>

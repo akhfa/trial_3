@@ -66,6 +66,13 @@
           <button type="submit" value="ChangePassword" class="btn btn-primary btn-lg btn-block">Change Password</button>
       </div>
     </form>
+
+    <form action="changepassword_controller">
+      <div class="form-group">
+          <button type="submit" value="ChangePassword" class="btn btn-primary btn-lg btn-block">Change Password</button>
+      </div>
+    </form>
+
     <?php if(strcmp($group_name, "default")  != 0){?>
     <form action="upload_controller">
     	<div class="form-group row text-center">
@@ -76,6 +83,14 @@
         <script type="text/javascript">
             alert("Anda belum masuk ke grup manapun. Manajemen file tidak dapat dilakukan.");
         </script>
+   <?php } ?>
+
+   <?php if($role === "leader"){?>
+    <form action="log_controller/viewlog">
+      <div class="form-group row text-center">
+          <button type="submit" value="View" class="btn btn-primary btn-lg btn-block">Lihat Log</button>
+      </div>
+   </form>
    <?php } ?>
 
 		  <form action="home/logout">
