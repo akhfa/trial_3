@@ -81,9 +81,10 @@
 		function getid($group_name)
 		{
 			$this->db->select('id');
+			$this->db->from('group');
 			$this->db->where('group_name', $group_name);
 			$query = $this->db->get();
-			return $query->result()->id;
+			return $query->result();
 		}
 	}
 ?>

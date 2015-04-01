@@ -96,10 +96,13 @@
 			return ($this->db->delete('users'));
 		}
 
-		function updateuser($username, $group, $role)
+		function updateuser($username, $group_name, $role)
 		{
 			//Cari group id
-			$group_id = $this->getgroupid($group);
+			$result = $this->getgroupid($group_name);
+			foreach ($result as $key) {
+				$group_id = $key->id;
+			}
 
 			//Update data
 			$data = array(
@@ -115,7 +118,7 @@
 		{
 			$CI =& get_instance();
 	        $CI->load->model('group');
-	        return $CI->group->getid();
+	        return $CI->group->getid($group_name);
 		}
 	}
 ?>
