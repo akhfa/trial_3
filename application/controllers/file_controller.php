@@ -22,7 +22,14 @@
 			else
 			{
 				if(unlink($dir.$namaFile))	
+				{
+					//log
+					$CI =& get_instance();
+			        $CI->load->model('log');
+			        $CI->log->addlog($session_data['username'], $dir.$namaFile, 'delete');
+					
 					redirect('home', 'refresh');
+				}
 				else
 					echo "Hapus file gagal";
 			}
@@ -53,7 +60,17 @@
 
 		function rrmdir($dir) { 
 		  foreach(glob($dir . '/*') as $file) { 
-		    if(is_dir($file)) rrmdir($file); else unlink($file); 
+		    if(is_dir($file)) rrmdir($file); 
+		    else
+		    {
+		    	unlink($file);
+		    	//log
+		    	$session_data = $this->session->userdata('logged_in');
+				$CI =& get_instance();
+		        $CI->load->model('log');
+		        $CI->log->addlog($session_data['username'], $file, 'delete');
+		    } 
+		    	 
 		  } rmdir($dir); 
 		}
 	}
